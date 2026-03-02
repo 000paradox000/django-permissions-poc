@@ -408,3 +408,33 @@ This is a PoC to test django-guardian.
 | Distribution    | operating_systems.delete_distribution     | False          | False      |
 | Distribution    | operating_systems.view_distribution       | False          | False      |
 | Distribution    | operating_systems.viewall_distribution    | True           | True       |
+
+## Users
+
+| Username                              | Password | Group                                |
+|---------------------------------------|----------|--------------------------------------|
+| admin                                 | 12345    | SuperAdmin                           |
+| operatingsystem_admin_1               | 12345    | Operating System Admin               |
+| operatingsystem_owner_1               | 12345    | Operating System Owner               |
+| operatingsystem_add_1                 | 12345    | Operating System Add                 |
+| operatingsystem_add_owned_only_1      | 12345    | Operating System Add Owned Only      |
+| operatingsystem_change_1              | 12345    | Operating System Change              |
+| operatingsystem_change_owned_only_1   | 12345    | Operating System Change Owned Only   |
+| operatingsystem_delete_1              | 12345    | Operating System Delete              |
+| operatingsystem_delete_owned_only_1   | 12345    | Operating System Delete Owned Only   |
+| operatingsystem_view_1                | 12345    | Operating System View                |
+| operatingsystem_view_owned_only_1     | 12345    | Operating System View Owned Only     |
+| operatingsystem_viewall_1             | 12345    | Operating System View All            |
+| operatingsystem_viewall_owned_only_1  | 12345    | Operating System View All Owned Only |
+| distribution_admin_1                  | 12345    | Distribution Admin                   |
+| distribution_owner_1                  | 12345    | Distribution Owner                   |
+| distribution_add_1                    | 12345    | Distribution Add                     |
+| distribution_add_owned_only_1         | 12345    | Distribution Add Owned Only          |
+| distribution_change_1                 | 12345    | Distribution Change                  |
+| distribution_change_owned_only_1      | 12345    | Distribution Change Owned Only       |
+| distribution_delete_1                 | 12345    | Distribution Delete                  |
+| distribution_delete_owned_only_1      | 12345    | Distribution Delete Owned Only       |
+| distribution_view_1                   | 12345    | Distribution View                    |
+| distribution_view_owned_only_1        | 12345    | Distribution View Owned Only         |
+| distribution_viewall_1                | 12345    | Distribution View All                |
+| distribution_viewall_owned_only_1     | 12345    | Distribution View All Owned Only     |

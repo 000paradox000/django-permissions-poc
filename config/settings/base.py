@@ -101,7 +101,13 @@ DATA = {
 }
 
 GROUPS = {
-    "Operating System Admin": [],
+    "Operating System Admin": [
+        "operating_systems.add_operatingsystem",
+        "operating_systems.change_operatingsystem",
+        "operating_systems.delete_operatingsystem",
+        "operating_systems.view_operatingsystem",
+        "operating_systems.viewall_operatingsystem",
+    ],
     "Operating System Owner": [],
     "Operating System Add": [],
     "Operating System Add Owned Only": [],
@@ -113,4 +119,97 @@ GROUPS = {
     "Operating System View Owned Only": [],
     "Operating System View All": [],
     "Operating System View All Owned Only": [],
+    "Distribution Admin": [
+        "operating_systems.add_distribution",
+        "operating_systems.change_distribution",
+        "operating_systems.delete_distribution",
+        "operating_systems.view_distribution",
+        "operating_systems.viewall_distribution",
+    ],
+    "Distribution Owner": [],
+    "Distribution Add": [],
+    "Distribution Add Owned Only": [],
+    "Distribution Change": [],
+    "Distribution Change Owned Only": [],
+    "Distribution Delete": [],
+    "Distribution Delete Owned Only": [],
+    "Distribution View": [],
+    "Distribution View Owned Only": [],
+    "Distribution View All": [],
+    "Distribution View All Owned Only": [],
+}
+
+USERS = {
+    "operatingsystem_admin_1": [
+        "Operating System Admin",
+    ],
+    "operatingsystem_owner_1": [
+        "Operating System Owner",
+    ],
+    "operatingsystem_add_1": [
+        "Operating System Add",
+    ],
+    "operatingsystem_add_owned_only_1": [
+        "Operating System Add Owned Only",
+    ],
+    "operatingsystem_change_1": [
+        "Operating System Change",
+    ],
+    "operatingsystem_change_owned_only_1": [
+        "Operating System Change Owned Only",
+    ],
+    "operatingsystem_delete_1": [
+        "Operating System Delete",
+    ],
+    "operatingsystem_delete_owned_only_1": [
+        "Operating System Delete Owned Only",
+    ],
+    "operatingsystem_view_1": [
+        "Operating System View",
+    ],
+    "operatingsystem_view_owned_only_1": [
+        "Operating System View Owned Only",
+    ],
+    "operatingsystem_viewall_1": [
+        "Operating System View All",
+    ],
+    "operatingsystem_viewall_owned_only_1": [
+        "Operating System View All Owned Only",
+    ],
+    "distribution_admin_1": [
+        "Distribution Admin",
+    ],
+    "distribution_owner_1": [
+        "Distribution Owner",
+    ],
+    "distribution_add_1": [
+        "Distribution Add",
+    ],
+    "distribution_add_owned_only_1": [
+        "Distribution Add Owned Only",
+    ],
+    "distribution_change_1": [
+        "Distribution Change",
+    ],
+    "distribution_change_owned_only_1": [
+        "Distribution Change Owned Only",
+    ],
+    "distribution_delete_1": [
+        "Distribution Delete",
+    ],
+    "distribution_delete_owned_only_1": [
+        "Distribution Delete Owned Only",
+    ],
+    "distribution_view_1": [
+        "Distribution View",
+    ],
+    "distribution_view_owned_only_1": [
+        "Distribution View Owned Only",
+    ],
+    "distribution_viewall_1": [
+        "Distribution View All",
+    ],
+    "distribution_viewall_owned_only_1": [
+        "Distribution View All Owned Only",
+    ],
 }

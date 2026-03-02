@@ -2,6 +2,7 @@ import uuid
 from collections.abc import Iterable
 
 from django.apps import apps
+from django.contrib.auth.models import Group, Permission
 from django.db.models.base import ModelBase
 from django.urls import URLPattern, URLResolver, get_resolver
 
@@ -98,3 +99,34 @@ def get_admin_urlnames(app_label, model) -> dict[str, str]:
         "change": f"admin:{app_label}_{modelname}_change",
         "delete": f"admin:{app_label}_{modelname}_delete",
     }
+
+
+def add_permission_to_group(group: Group | str, permission: str) -> None:
+    """
+    Assign a permission to a group.
+
+    Args:
+        group: Group instance or group name.
+        permission: Full permission string
+                    (e.g. "operating_systems.add_operatingsystem")
+
+    Raises:
+        ValueError: If permission format is invalid.
+        Group.DoesNotExist: If group name does not exist.
+        Permission.DoesNotExist: If permission does not exist.
+    """
+
+    if isinstance(group, str):
+        group = Group.objects.get(name=group)
+
+    if "." not in permission:
+        raise ValueError("Permission must be in format 'app_label.codename'")
+
+    app_label, codename = permission.split(".", 1)
+
+    perm = Permission.objects.get(
+        content_type__app_label=app_label,
+        codename=codename,
+    )
+
+    group.permissions.add(perm)
