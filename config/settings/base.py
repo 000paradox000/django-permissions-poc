@@ -31,6 +31,7 @@ THIRD_PARTY_APPS = [
     "admin_extra_buttons",
     "rest_framework",
     "drf_spectacular",
+    "guardian",
 ]
 LOCAL_APPS = [
     "django_permissions_poc.common.apps.CommonConfig",
@@ -213,3 +214,11 @@ USERS = {
         "Distribution View All Owned Only",
     ],
 }
+
+# -----------------------------------------------------------------------------
+# Django Guardian
+
+AUTHENTICATION_BACKENDS = (
+    "django.contrib.auth.backends.ModelBackend",
+    "guardian.backends.ObjectPermissionBackend",
+)
