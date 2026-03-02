@@ -2,6 +2,7 @@ import pytest
 from django.urls import reverse
 
 from conftest import ACTIONS, APP_LABEL, MODELS
+from django_permissions_poc.common import utilities
 
 pytestmark = pytest.mark.django_db
 
@@ -29,12 +30,7 @@ def test_superadmin_can_access_admin_pages(client, superadmin, model):
     obj = model.objects.first()
     assert obj is not None, f"No objects for '{model_name}'"
 
-    urlnames = {
-        "changelist": f"admin:{APP_LABEL}_{model_name}_changelist",
-        "add": f"admin:{APP_LABEL}_{model_name}_add",
-        "change": f"admin:{APP_LABEL}_{model_name}_change",
-        "delete": f"admin:{APP_LABEL}_{model_name}_delete",
-    }
+    urlnames = utilities.get_admin_urlnames(APP_LABEL, model)
 
     # changelist / add
     assert client.get(reverse(urlnames["changelist"])).status_code == 200
