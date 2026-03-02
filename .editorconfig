@@ -1,0 +1,53 @@
+# ------------------------------------------------------------------
+# EditorConfig root
+# ------------------------------------------------------------------
+# Prevent EditorConfig from searching parent directories.
+root = true
+
+# ------------------------------------------------------------------
+# Global defaults (all files)
+# ------------------------------------------------------------------
+[*]
+# Use spaces for indentation (Python / YAML / JSON standard).
+indent_style = space
+
+# Default indentation width.
+indent_size = 4
+
+# Enforce Unix-style line endings.
+end_of_line = lf
+
+# Use UTF-8 encoding everywhere.
+charset = utf-8
+
+# Remove trailing whitespace on save.
+trim_trailing_whitespace = true
+
+# Ensure files end with a newline (POSIX-friendly).
+insert_final_newline = true
+
+# Advisory max line length.
+# NOTE: Actual enforcement is done by Ruff (line-length = 79).
+max_line_length = 79
+
+# ------------------------------------------------------------------
+# Makefiles
+# ------------------------------------------------------------------
+# Make requires hard tabs for recipe lines.
+[{Makefile,**.mk}]
+indent_style = tab
+
+# ------------------------------------------------------------------
+# Docker Compose
+# ------------------------------------------------------------------
+# Docker Compose conventionally uses 2-space indentation.
+[**/docker-compose.{yml,yaml}]
+indent_size = 2
+
+# ------------------------------------------------------------------
+# HTML
+# ------------------------------------------------------------------
+# Frontend HTML readability convention.
+[*.html]
+indent_size = 2
+max_line_length = 120

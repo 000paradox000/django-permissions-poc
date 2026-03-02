@@ -1,0 +1,189 @@
+# =============================================================================
+
+[tool.ruff]
+# Enforce the same maximum line length used historically (PEP 8–style).
+line-length = 79
+
+# Target the actual runtime version to avoid false positives.
+target-version = "py314"
+
+# =============================================================================
+
+[tool.ruff.lint]
+# Selected rules:
+# E, F, W  → pycodestyle + pyflakes (Flake8 core)
+# B        → flake8-bugbear (likely bugs & footguns)
+# C4       → flake8-comprehensions (clearer, faster comprehensions)
+# SIM      → flake8-simplify (simpler, more readable code)
+# I        → isort replacement (import ordering)
+# S        → flake8-bandit (fast security smell detection)
+select = ["E", "F", "W", "B", "C4", "SIM", "I", "S"]
+
+# Ignore rules that intentionally conflict with Black / Ruff formatter style.
+# - E203: whitespace before ':' (Black-compatible slicing)
+ignore = ["E203"]
+
+# Allow Ruff to automatically fix everything it safely can.
+fixable = ["ALL"]
+unfixable = []
+
+# =============================================================================
+
+[tool.ruff.lint.per-file-ignores]
+# Packages / module exports
+# - F401: imported but unused
+#   Common in __init__.py for re-exporting public APIs.
+"__init__.py" = ["F401"]
+
+# Views (Django)
+# - F401: imported but unused
+#   Views often import symbols for side effects (decorators, routers).
+"views.py" = ["F401"]
+"**/views/**" = ["F401"]
+
+# Tests
+# - F401: imported but unused
+#   Test modules frequently import fixtures or helpers implicitly.
+# - S101: use of assert
+#   Plain assert is idiomatic and encouraged in pytest.
+"tests.py" = ["F401", "S101"]
+"**/tests/**" = ["F401", "S101"]
+
+# Models (Django)
+# - F401: imported but unused
+#   Models often import related models to register relations or signals.
+"models.py" = ["F401"]
+"**/models/**" = ["F401"]
+
+# Admin (Django)
+# - F401: imported but unused
+#   Admin modules commonly import models just to register them.
+"admin.py" = ["F401"]
+"**/admin/**" = ["F401"]
+
+# Settings (Django)
+# - F401: imported but unused
+# - E501: Line too long
+# - F403: Unable to detect undefined names
+# - F405: may be undefined, or defined from star imports
+# - S105: hardcoded password string (Django SECRET_KEY often triggers)
+"**/settings/**" = ["F401", "E501", "F403", "F405", "S105"]
+"**/settings.py" = ["F401", "E501", "F403", "F405", "S105"]
+
+# Migrations (auto-generated)
+# - E501: line too long
+#   Migration files are generated code; formatting is not hand-edited.
+"**/migrations/**" = ["E501"]
+
+# - S106: hardcoded password func arg (e.g., bootstrap admin in local/dev)
+"**/commands/**" = ["S106"]
+
+# =============================================================================
+
+[tool.coverage.run]
+# Files to completely exclude from coverage measurement.
+# - tests/*: test code should not count toward application coverage
+# - __init__.py: typically contains imports/exports, not executable logic
+omit = [
+    "tests/*",
+    "**/__init__.py",
+]
+
+# =============================================================================
+
+[tool.coverage.report]
+# Lines to exclude from coverage reporting.
+# Used for explicit, intentional opt-outs.
+exclude_lines = [
+    "pragma: no cover",
+]
+
+# =============================================================================
+
+[tool.pytest.ini_options]
+# Marker definitions
+markers = [
+    "functional: tests that interact with external services (e.g., APIs)",
+]
+
+# Default pytest options
+# -ra : show extra summary info for skipped/failed tests
+# -s  : disable stdout/stderr capture (useful for debugging)
+# -vv : very verbose output
+addopts = "-ra -s -vv"
+
+# Django integration
+# Automatically locate the Django project (pytest-django).
+django_find_project = true
+
+# =============================================================================
+
+[tool.mypy]
+# Global behavior
+python_version = "3.14"
+strict = false
+
+# Fail fast but avoid Django false positives
+warn_unused_configs = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+
+# Django uses runtime attributes heavily
+ignore_missing_imports = true
+
+# Speed & sanity
+follow_imports = "silent"
+show_error_codes = true
+pretty = true
+
+# Django integration
+plugins = [
+    "mypy_django_plugin.main",
+]
+
+# =============================================================================
+
+[tool.django-stubs]
+# Point to your *base* Django settings module
+django_settings_module = "config.settings"
+
+# Gradual typing strategy
+
+# =============================================================================
+
+[[tool.mypy.overrides]]
+module = "*.migrations.*"
+ignore_errors = true
+
+# =============================================================================
+
+[[tool.mypy.overrides]]
+module = "config.settings.*"
+ignore_errors = true
+
+# =============================================================================
+
+[[tool.mypy.overrides]]
+module = "*.admin"
+ignore_errors = true
+
+# =============================================================================
+
+[[tool.mypy.overrides]]
+module = "*.tests.*"
+ignore_errors = true
+
+# =============================================================================
+[tool.bandit]
+# Skip specific rules
+skips = ["B105", "B106"]
+
+# Optional: keep your global file exclusions aligned with pre-commit
+exclude_dirs = [
+    "static_root",
+    "static",
+    "media",
+    "files",
+    "temporal",
+    "migrations",
+]

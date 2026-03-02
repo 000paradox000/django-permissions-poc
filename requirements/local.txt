@@ -1,0 +1,7 @@
+-r base.txt
+
+# Testing
+pytest
+pytest-django
+pre-commit
+coverage

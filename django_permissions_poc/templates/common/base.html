@@ -1,0 +1,24 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Django Permissions POC{% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'common/css/base.css' %}">
+
+    {% block extra_head %}{% endblock extra_head %}
+</head>
+
+<body>
+    <main>
+        <div class="container">
+            {% block content %}{% endblock content %}
+        </div>
+    </main>
+
+    {% block extra_js %}{% endblock extra_js %}
+</body>
+</html>

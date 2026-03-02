@@ -1,0 +1,18 @@
+# Django
+Django
+
+# Environment Variables
+django-environ
+
+# Shell
+ipython
+
+# Extra buttons
+django-admin-extra-buttons
+
+# Django
+djangorestframework
+drf-spectacular[sidecar]
+
+# Django guardian
+django-guardian
