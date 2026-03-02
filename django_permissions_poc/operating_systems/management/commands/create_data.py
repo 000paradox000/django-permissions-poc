@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.core.management.base import BaseCommand
 
 from django_permissions_poc.operating_systems.models import (
@@ -12,13 +13,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         has_created = False
 
-        data = {
-            "GNU/Linux": ["Debian", "Ubuntu"],
-            "Windows": ["Windows 11", "Windows XP"],
-            "Mac OS": ["Sequoia", "Sonoma"],
-        }
-
-        for os_name, dist_names in data.items():
+        for os_name, dist_names in settings.DATA.items():
             os_obj, created = OperatingSystem.objects.get_or_create(
                 name=os_name
             )

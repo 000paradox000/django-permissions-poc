@@ -75,3 +75,49 @@ django.reset.%:
 	rm -rf $(DJANGO_DB_DIR)/*.db
 	find $(DJANGO_PROJECT_DIR) -path "*/migrations/*.py" ! -name "__init__.py" -delete
 	make django.init.$*
+
+# -----------------------------------------------------------------------------
+# Tests
+
+tests.run.%:
+	pytest \
+		--ds=config.settings.$*
+
+tests.functional.run.%:
+	pytest \
+		-m "functional" \
+		--ds=config.settings.$*
+
+tests.not_functional.run.%:
+	pytest \
+		-m "not functional" \
+		--ds=config.settings.$*
+
+# -----------------------------------------------------------------------------
+# Coverage using Django test runner
+
+coverage.run.%:
+	coverage erase
+	coverage run \
+		-m pytest \
+		--ds=config.settings.$*
+	coverage report \
+		-m
+
+coverage.not_functional.run.%:
+	coverage erase
+	coverage run \
+		-m pytest \
+		-m "not functional" \
+		--ds=config.settings.$*
+	coverage report \
+		-m
+
+coverage.functional.run.%:
+	coverage erase
+	coverage run \
+		-m pytest \
+		-m "functional" \
+		--ds=config.settings.$*
+	coverage report \
+		-m

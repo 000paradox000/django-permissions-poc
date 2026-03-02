@@ -90,3 +90,12 @@ SITE_HEADER = "Django Permissions POC"
 # Admins
 
 ADMINS = []
+
+# -----------------------------------------------------------------------------
+# Data
+
+DATA = {
+    "GNU/Linux": ["Debian", "Ubuntu"],
+    "Windows": ["Windows 11", "Windows XP"],
+    "Mac OS": ["Sequoia", "Sonoma"],
+}
