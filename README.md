@@ -34,94 +34,377 @@ This is a PoC to test django-guardian.
 
 ## Permissions
 
-- [X] Add
-- [X] Change
-- [X] Delete
-- [X] View
-- [X] View All
+| Name                           | App Label         | Codename                | Permission full name                      |
+|--------------------------------|-------------------|-------------------------|-------------------------------------------|
+| Can add operating system       | operating_systems | add_operatingsystem     | operating_systems.add_operatingsystem     |
+| Can change operating system    | operating_systems | change_operatingsystem  | operating_systems.change_operatingsystem  |
+| Can delete operating system    | operating_systems | delete_operatingsystem  | operating_systems.delete_operatingsystem  |
+| Can view operating system      | operating_systems | view_operatingsystem    | operating_systems.view_operatingsystem    |
+| Can view all operating systems | operating_systems | viewall_operatingsystem | operating_systems.viewall_operatingsystem |
+| Can add distribution           | operating_systems | add_distribution        | operating_systems.add_distribution        |
+| Can change distribution        | operating_systems | change_distribution     | operating_systems.change_distribution     |
+| Can delete distribution        | operating_systems | delete_distribution     | operating_systems.delete_distribution     |
+| Can view distribution          | operating_systems | view_distribution       | operating_systems.view_distribution       |
+| Can view all distributions     | operating_systems | viewall_distribution    | operating_systems.viewall_distribution    |
 
-## Groups
-
-- [X] SuperAdmin: virtual group, is_superuser & is_staff
-- [ ] Operating System Viewer: Can view, view all OperatingSystem
-- [ ] Operating System Admin: Can add, change, delete, view, view all OperatingSystem
-- [ ] Operating System Owner: Can add, change, delete, view, view all OperatingSystem owned by the user
-- [ ] Distribution Viewer: Can view, view all Distribution
-- [ ] Distribution Admin: Can add, change, delete, view, view all Distribution
-- [ ] Distribution Owner: Can add, change, delete, view, view all Distribution owned by the user
+## Groups or User Roles
 
 ### Anonymous
 
-| Status | Model           | Permission                                | Has permission | Owned only |
-|--------|-----------------|-------------------------------------------|----------------|------------|
-| [ ]    | OperatingSystem | operating_systems.add_operatingsystem     | False          | False      |
-| [ ]    | OperatingSystem | operating_systems.change_operatingsystem  | False          | False      |
-| [ ]    | OperatingSystem | operating_systems.delete_operatingsystem  | False          | False      |
-| [ ]    | OperatingSystem | operating_systems.view_operatingsystem    | False          | False      |
-| [ ]    | OperatingSystem | operating_systems.viewall_operatingsystem | False          | False      |
-| [ ]    | Distribution    | operating_systems.add_distribution        | False          | False      |
-| [ ]    | Distribution    | operating_systems.change_distribution     | False          | False      |
-| [ ]    | Distribution    | operating_systems.delete_distribution     | False          | False      |
-| [ ]    | Distribution    | operating_systems.view_distribution       | False          | False      |
-| [ ]    | Distribution    | operating_systems.viewall_distribution    | False          | False      |
+| Model           | Permission full name                      | Has permission | Owned only |
+|-----------------|-------------------------------------------|----------------|------------|
+| OperatingSystem | operating_systems.add_operatingsystem     | False          | False      |
+| OperatingSystem | operating_systems.change_operatingsystem  | False          | False      |
+| OperatingSystem | operating_systems.delete_operatingsystem  | False          | False      |
+| OperatingSystem | operating_systems.view_operatingsystem    | False          | False      |
+| OperatingSystem | operating_systems.viewall_operatingsystem | False          | False      |
+| Distribution    | operating_systems.add_distribution        | False          | False      |
+| Distribution    | operating_systems.change_distribution     | False          | False      |
+| Distribution    | operating_systems.delete_distribution     | False          | False      |
+| Distribution    | operating_systems.view_distribution       | False          | False      |
+| Distribution    | operating_systems.viewall_distribution    | False          | False      |
 
-### Super Admin
+### SuperAdmin
 
-| Status | Model           | Permission                                | Has permission | Owned only |
-|--------|-----------------|-------------------------------------------|----------------|------------|
-| [ ]    | OperatingSystem | operating_systems.add_operatingsystem     | True           | False      |
-| [ ]    | OperatingSystem | operating_systems.change_operatingsystem  | True           | False      |
-| [ ]    | OperatingSystem | operating_systems.delete_operatingsystem  | True           | False      |
-| [ ]    | OperatingSystem | operating_systems.view_operatingsystem    | True           | False      |
-| [ ]    | OperatingSystem | operating_systems.viewall_operatingsystem | True           | False      |
-| [ ]    | Distribution    | operating_systems.add_distribution        | True           | False      |
-| [ ]    | Distribution    | operating_systems.change_distribution     | True           | False      |
-| [ ]    | Distribution    | operating_systems.delete_distribution     | True           | False      |
-| [ ]    | Distribution    | operating_systems.view_distribution       | True           | False      |
-| [ ]    | Distribution    | operating_systems.viewall_distribution    | True           | False      |
-
-### Operating System Viewer Admin
-
-| Status | Model           | Permission                                | Has permission | Owned only |
-|--------|-----------------|-------------------------------------------|----------------|------------|
-| [ ]    | OperatingSystem | operating_systems.add_operatingsystem     | False          | False      |
-| [ ]    | OperatingSystem | operating_systems.change_operatingsystem  | False          | False      |
-| [ ]    | OperatingSystem | operating_systems.delete_operatingsystem  | False          | False      |
-| [ ]    | OperatingSystem | operating_systems.view_operatingsystem    | True           | False      |
-| [ ]    | OperatingSystem | operating_systems.viewall_operatingsystem | True           | False      |
-| [ ]    | Distribution    | operating_systems.add_distribution        | False          | False      |
-| [ ]    | Distribution    | operating_systems.change_distribution     | False          | False      |
-| [ ]    | Distribution    | operating_systems.delete_distribution     | False          | False      |
-| [ ]    | Distribution    | operating_systems.view_distribution       | False          | False      |
-| [ ]    | Distribution    | operating_systems.viewall_distribution    | False          | False      |
-
-
-
-
-
-| Status | Model            | Permission                                | Owned only |
-|--------|------------------|-------------------------------------------|------------|
-| [ ]    | OperatingSystem  | operating_systems.view_operatingsystem    | False      |
-| [ ]    | OperatingSystem  | operating_systems.viewall_operatingsystem | False      |
+| Model           | Permission full name                      | Has permission | Owned only |
+|-----------------|-------------------------------------------|----------------|------------|
+| OperatingSystem | operating_systems.add_operatingsystem     | True           | False      |
+| OperatingSystem | operating_systems.change_operatingsystem  | True           | False      |
+| OperatingSystem | operating_systems.delete_operatingsystem  | True           | False      |
+| OperatingSystem | operating_systems.view_operatingsystem    | True           | False      |
+| OperatingSystem | operating_systems.viewall_operatingsystem | True           | False      |
+| Distribution    | operating_systems.add_distribution        | True           | False      |
+| Distribution    | operating_systems.change_distribution     | True           | False      |
+| Distribution    | operating_systems.delete_distribution     | True           | False      |
+| Distribution    | operating_systems.view_distribution       | True           | False      |
+| Distribution    | operating_systems.viewall_distribution    | True           | False      |
 
 ### Operating System Admin
 
-| Status | Model            | Permission                                |
-|--------|------------------|-------------------------------------------|
-| [ ]    | OperatingSystem  | operating_systems.add_operatingsystem     |
-| [ ]    | OperatingSystem  | operating_systems.change_operatingsystem  |
-| [ ]    | OperatingSystem  | operating_systems.delete_operatingsystem  |
-| [ ]    | OperatingSystem  | operating_systems.view_operatingsystem    |
-| [ ]    | OperatingSystem  | operating_systems.viewall_operatingsystem |
+| Model           | Permission full name                      | Has permission | Owned only |
+|-----------------|-------------------------------------------|----------------|------------|
+| OperatingSystem | operating_systems.add_operatingsystem     | True           | False      |
+| OperatingSystem | operating_systems.change_operatingsystem  | True           | False      |
+| OperatingSystem | operating_systems.delete_operatingsystem  | True           | False      |
+| OperatingSystem | operating_systems.view_operatingsystem    | True           | False      |
+| OperatingSystem | operating_systems.viewall_operatingsystem | True           | False      |
+| Distribution    | operating_systems.add_distribution        | False          | False      |
+| Distribution    | operating_systems.change_distribution     | False          | False      |
+| Distribution    | operating_systems.delete_distribution     | False          | False      |
+| Distribution    | operating_systems.view_distribution       | False          | False      |
+| Distribution    | operating_systems.viewall_distribution    | False          | False      |
 
-## Users
+### Operating System Owner
 
-| Status | Username      | Password  | Group                    |
-|--------|---------------|-----------|--------------------------|
-| [ ]    | admin         | 12345     | SuperAdmin               |
-| [ ]    | os_viewer     | 12345     | Operating System Viewer  |
-| [ ]    | os_admin      | 12345     | Operating System Admin   |
-| [ ]    | os_owner      | 12345     | Operating System Owner   |
-| [ ]    | distro_viewer | 12345     | Distribution Viewer      |
-| [ ]    | distro_admin  | 12345     | Distribution Admin       |
-| [ ]    | distro_owner  | 12345     | Distribution Owner       |
+| Model           | Permission full name                      | Has permission | Owned only |
+|-----------------|-------------------------------------------|----------------|------------|
+| OperatingSystem | operating_systems.add_operatingsystem     | True           | True       |
+| OperatingSystem | operating_systems.change_operatingsystem  | True           | True       |
+| OperatingSystem | operating_systems.delete_operatingsystem  | True           | True       |
+| OperatingSystem | operating_systems.view_operatingsystem    | True           | True       |
+| OperatingSystem | operating_systems.viewall_operatingsystem | True           | True       |
+| Distribution    | operating_systems.add_distribution        | False          | False      |
+| Distribution    | operating_systems.change_distribution     | False          | False      |
+| Distribution    | operating_systems.delete_distribution     | False          | False      |
+| Distribution    | operating_systems.view_distribution       | False          | False      |
+| Distribution    | operating_systems.viewall_distribution    | False          | False      |
+
+### Operating System Add
+
+| Model           | Permission full name                      | Has permission | Owned only |
+|-----------------|-------------------------------------------|----------------|------------|
+| OperatingSystem | operating_systems.add_operatingsystem     | True           | False      |
+| OperatingSystem | operating_systems.change_operatingsystem  | False          | False      |
+| OperatingSystem | operating_systems.delete_operatingsystem  | False          | False      |
+| OperatingSystem | operating_systems.view_operatingsystem    | False          | False      |
+| OperatingSystem | operating_systems.viewall_operatingsystem | False          | False      |
+| Distribution    | operating_systems.add_distribution        | False          | False      |
+| Distribution    | operating_systems.change_distribution     | False          | False      |
+| Distribution    | operating_systems.delete_distribution     | False          | False      |
+| Distribution    | operating_systems.view_distribution       | False          | False      |
+| Distribution    | operating_systems.viewall_distribution    | False          | False      |
+
+### Operating System Add Owned Only
+
+| Model           | Permission full name                      | Has permission | Owned only |
+|-----------------|-------------------------------------------|----------------|------------|
+| OperatingSystem | operating_systems.add_operatingsystem     | True           | True       |
+| OperatingSystem | operating_systems.change_operatingsystem  | False          | False      |
+| OperatingSystem | operating_systems.delete_operatingsystem  | False          | False      |
+| OperatingSystem | operating_systems.view_operatingsystem    | False          | False      |
+| OperatingSystem | operating_systems.viewall_operatingsystem | False          | False      |
+| Distribution    | operating_systems.add_distribution        | False          | False      |
+| Distribution    | operating_systems.change_distribution     | False          | False      |
+| Distribution    | operating_systems.delete_distribution     | False          | False      |
+| Distribution    | operating_systems.view_distribution       | False          | False      |
+| Distribution    | operating_systems.viewall_distribution    | False          | False      |
+
+### Operating System Change
+
+| Model           | Permission full name                      | Has permission | Owned only |
+|-----------------|-------------------------------------------|----------------|------------|
+| OperatingSystem | operating_systems.add_operatingsystem     | False          | False      |
+| OperatingSystem | operating_systems.change_operatingsystem  | True           | False      |
+| OperatingSystem | operating_systems.delete_operatingsystem  | False          | False      |
+| OperatingSystem | operating_systems.view_operatingsystem    | False          | False      |
+| OperatingSystem | operating_systems.viewall_operatingsystem | False          | False      |
+| Distribution    | operating_systems.add_distribution        | False          | False      |
+| Distribution    | operating_systems.change_distribution     | False          | False      |
+| Distribution    | operating_systems.delete_distribution     | False          | False      |
+| Distribution    | operating_systems.view_distribution       | False          | False      |
+| Distribution    | operating_systems.viewall_distribution    | False          | False      |
+
+### Operating System Change Owned Only
+
+| Model           | Permission full name                      | Has permission | Owned only |
+|-----------------|-------------------------------------------|----------------|------------|
+| OperatingSystem | operating_systems.add_operatingsystem     | False          | False      |
+| OperatingSystem | operating_systems.change_operatingsystem  | True           | True       |
+| OperatingSystem | operating_systems.delete_operatingsystem  | False          | False      |
+| OperatingSystem | operating_systems.view_operatingsystem    | False          | False      |
+| OperatingSystem | operating_systems.viewall_operatingsystem | False          | False      |
+| Distribution    | operating_systems.add_distribution        | False          | False      |
+| Distribution    | operating_systems.change_distribution     | False          | False      |
+| Distribution    | operating_systems.delete_distribution     | False          | False      |
+| Distribution    | operating_systems.view_distribution       | False          | False      |
+| Distribution    | operating_systems.viewall_distribution    | False          | False      |
+
+### Operating System Delete
+
+| Model           | Permission full name                      | Has permission | Owned only |
+|-----------------|-------------------------------------------|----------------|------------|
+| OperatingSystem | operating_systems.add_operatingsystem     | False          | False      |
+| OperatingSystem | operating_systems.change_operatingsystem  | False          | False      |
+| OperatingSystem | operating_systems.delete_operatingsystem  | True           | False      |
+| OperatingSystem | operating_systems.view_operatingsystem    | False          | False      |
+| OperatingSystem | operating_systems.viewall_operatingsystem | False          | False      |
+| Distribution    | operating_systems.add_distribution        | False          | False      |
+| Distribution    | operating_systems.change_distribution     | False          | False      |
+| Distribution    | operating_systems.delete_distribution     | False          | False      |
+| Distribution    | operating_systems.view_distribution       | False          | False      |
+| Distribution    | operating_systems.viewall_distribution    | False          | False      |
+
+### Operating System Delete Owned Only
+
+| Model           | Permission full name                      | Has permission | Owned only |
+|-----------------|-------------------------------------------|----------------|------------|
+| OperatingSystem | operating_systems.add_operatingsystem     | False          | False      |
+| OperatingSystem | operating_systems.change_operatingsystem  | False          | False      |
+| OperatingSystem | operating_systems.delete_operatingsystem  | True           | True       |
+| OperatingSystem | operating_systems.view_operatingsystem    | False          | False      |
+| OperatingSystem | operating_systems.viewall_operatingsystem | False          | False      |
+| Distribution    | operating_systems.add_distribution        | False          | False      |
+| Distribution    | operating_systems.change_distribution     | False          | False      |
+| Distribution    | operating_systems.delete_distribution     | False          | False      |
+| Distribution    | operating_systems.view_distribution       | False          | False      |
+| Distribution    | operating_systems.viewall_distribution    | False          | False      |
+
+### Operating System View
+
+| Model           | Permission full name                      | Has permission | Owned only |
+|-----------------|-------------------------------------------|----------------|------------|
+| OperatingSystem | operating_systems.add_operatingsystem     | False          | False      |
+| OperatingSystem | operating_systems.change_operatingsystem  | False          | False      |
+| OperatingSystem | operating_systems.delete_operatingsystem  | False          | False      |
+| OperatingSystem | operating_systems.view_operatingsystem    | True           | False      |
+| OperatingSystem | operating_systems.viewall_operatingsystem | False          | False      |
+| Distribution    | operating_systems.add_distribution        | False          | False      |
+| Distribution    | operating_systems.change_distribution     | False          | False      |
+| Distribution    | operating_systems.delete_distribution     | False          | False      |
+| Distribution    | operating_systems.view_distribution       | False          | False      |
+| Distribution    | operating_systems.viewall_distribution    | False          | False      |
+
+### Operating System View Owned Only
+
+| Model           | Permission full name                      | Has permission | Owned only |
+|-----------------|-------------------------------------------|----------------|------------|
+| OperatingSystem | operating_systems.add_operatingsystem     | False          | False      |
+| OperatingSystem | operating_systems.change_operatingsystem  | False          | False      |
+| OperatingSystem | operating_systems.delete_operatingsystem  | False          | False      |
+| OperatingSystem | operating_systems.view_operatingsystem    | True           | True       |
+| OperatingSystem | operating_systems.viewall_operatingsystem | False          | False      |
+| Distribution    | operating_systems.add_distribution        | False          | False      |
+| Distribution    | operating_systems.change_distribution     | False          | False      |
+| Distribution    | operating_systems.delete_distribution     | False          | False      |
+| Distribution    | operating_systems.view_distribution       | False          | False      |
+| Distribution    | operating_systems.viewall_distribution    | False          | False      |
+
+### Operating System View All
+
+| Model           | Permission full name                      | Has permission | Owned only |
+|-----------------|-------------------------------------------|----------------|------------|
+| OperatingSystem | operating_systems.add_operatingsystem     | False          | False      |
+| OperatingSystem | operating_systems.change_operatingsystem  | False          | False      |
+| OperatingSystem | operating_systems.delete_operatingsystem  | False          | False      |
+| OperatingSystem | operating_systems.view_operatingsystem    | False          | False      |
+| OperatingSystem | operating_systems.viewall_operatingsystem | True           | False      |
+| Distribution    | operating_systems.add_distribution        | False          | False      |
+| Distribution    | operating_systems.change_distribution     | False          | False      |
+| Distribution    | operating_systems.delete_distribution     | False          | False      |
+| Distribution    | operating_systems.view_distribution       | False          | False      |
+| Distribution    | operating_systems.viewall_distribution    | False          | False      |
+
+### Operating System View All Owned Only
+
+| Model           | Permission full name                      | Has permission | Owned only |
+|-----------------|-------------------------------------------|----------------|------------|
+| OperatingSystem | operating_systems.add_operatingsystem     | False          | False      |
+| OperatingSystem | operating_systems.change_operatingsystem  | False          | False      |
+| OperatingSystem | operating_systems.delete_operatingsystem  | False          | False      |
+| OperatingSystem | operating_systems.view_operatingsystem    | False          | False      |
+| OperatingSystem | operating_systems.viewall_operatingsystem | True           | True       |
+| Distribution    | operating_systems.add_distribution        | False          | False      |
+| Distribution    | operating_systems.change_distribution     | False          | False      |
+| Distribution    | operating_systems.delete_distribution     | False          | False      |
+| Distribution    | operating_systems.view_distribution       | False          | False      |
+| Distribution    | operating_systems.viewall_distribution    | False          | False      |
+
+### Distribution Add
+
+| Model           | Permission full name                      | Has permission | Owned only |
+|-----------------|-------------------------------------------|----------------|------------|
+| OperatingSystem | operating_systems.add_operatingsystem     | False          | False      |
+| OperatingSystem | operating_systems.change_operatingsystem  | False          | False      |
+| OperatingSystem | operating_systems.delete_operatingsystem  | False          | False      |
+| OperatingSystem | operating_systems.view_operatingsystem    | False          | False      |
+| OperatingSystem | operating_systems.viewall_operatingsystem | False          | False      |
+| Distribution    | operating_systems.add_distribution        | True           | False      |
+| Distribution    | operating_systems.change_distribution     | False          | False      |
+| Distribution    | operating_systems.delete_distribution     | False          | False      |
+| Distribution    | operating_systems.view_distribution       | False          | False      |
+| Distribution    | operating_systems.viewall_distribution    | False          | False      |
+
+### Distribution Add Owned Only
+
+| Model           | Permission full name                      | Has permission | Owned only |
+|-----------------|-------------------------------------------|----------------|------------|
+| OperatingSystem | operating_systems.add_operatingsystem     | False          | False      |
+| OperatingSystem | operating_systems.change_operatingsystem  | False          | False      |
+| OperatingSystem | operating_systems.delete_operatingsystem  | False          | False      |
+| OperatingSystem | operating_systems.view_operatingsystem    | False          | False      |
+| OperatingSystem | operating_systems.viewall_operatingsystem | False          | False      |
+| Distribution    | operating_systems.add_distribution        | True           | True       |
+| Distribution    | operating_systems.change_distribution     | False          | False      |
+| Distribution    | operating_systems.delete_distribution     | False          | False      |
+| Distribution    | operating_systems.view_distribution       | False          | False      |
+| Distribution    | operating_systems.viewall_distribution    | False          | False      |
+
+### Distribution Change
+
+| Model           | Permission full name                      | Has permission | Owned only |
+|-----------------|-------------------------------------------|----------------|------------|
+| OperatingSystem | operating_systems.add_operatingsystem     | False          | False      |
+| OperatingSystem | operating_systems.change_operatingsystem  | False          | False      |
+| OperatingSystem | operating_systems.delete_operatingsystem  | False          | False      |
+| OperatingSystem | operating_systems.view_operatingsystem    | False          | False      |
+| OperatingSystem | operating_systems.viewall_operatingsystem | False          | False      |
+| Distribution    | operating_systems.add_distribution        | False          | False      |
+| Distribution    | operating_systems.change_distribution     | True           | False      |
+| Distribution    | operating_systems.delete_distribution     | False          | False      |
+| Distribution    | operating_systems.view_distribution       | False          | False      |
+| Distribution    | operating_systems.viewall_distribution    | False          | False      |
+
+### Distribution Change Owned Only
+
+| Model           | Permission full name                      | Has permission | Owned only |
+|-----------------|-------------------------------------------|----------------|------------|
+| OperatingSystem | operating_systems.add_operatingsystem     | False          | False      |
+| OperatingSystem | operating_systems.change_operatingsystem  | False          | False      |
+| OperatingSystem | operating_systems.delete_operatingsystem  | False          | False      |
+| OperatingSystem | operating_systems.view_operatingsystem    | False          | False      |
+| OperatingSystem | operating_systems.viewall_operatingsystem | False          | False      |
+| Distribution    | operating_systems.add_distribution        | False          | False      |
+| Distribution    | operating_systems.change_distribution     | True           | True       |
+| Distribution    | operating_systems.delete_distribution     | False          | False      |
+| Distribution    | operating_systems.view_distribution       | False          | False      |
+| Distribution    | operating_systems.viewall_distribution    | False          | False      |
+
+### Distribution Delete
+
+| Model           | Permission full name                      | Has permission | Owned only |
+|-----------------|-------------------------------------------|----------------|------------|
+| OperatingSystem | operating_systems.add_operatingsystem     | False          | False      |
+| OperatingSystem | operating_systems.change_operatingsystem  | False          | False      |
+| OperatingSystem | operating_systems.delete_operatingsystem  | False          | False      |
+| OperatingSystem | operating_systems.view_operatingsystem    | False          | False      |
+| OperatingSystem | operating_systems.viewall_operatingsystem | False          | False      |
+| Distribution    | operating_systems.add_distribution        | False          | False      |
+| Distribution    | operating_systems.change_distribution     | False          | False      |
+| Distribution    | operating_systems.delete_distribution     | True           | False      |
+| Distribution    | operating_systems.view_distribution       | False          | False      |
+| Distribution    | operating_systems.viewall_distribution    | False          | False      |
+
+### Distribution Delete Owned Only
+
+| Model           | Permission full name                      | Has permission | Owned only |
+|-----------------|-------------------------------------------|----------------|------------|
+| OperatingSystem | operating_systems.add_operatingsystem     | False          | False      |
+| OperatingSystem | operating_systems.change_operatingsystem  | False          | False      |
+| OperatingSystem | operating_systems.delete_operatingsystem  | False          | False      |
+| OperatingSystem | operating_systems.view_operatingsystem    | False          | False      |
+| OperatingSystem | operating_systems.viewall_operatingsystem | False          | False      |
+| Distribution    | operating_systems.add_distribution        | False          | False      |
+| Distribution    | operating_systems.change_distribution     | False          | False      |
+| Distribution    | operating_systems.delete_distribution     | True           | True       |
+| Distribution    | operating_systems.view_distribution       | False          | False      |
+| Distribution    | operating_systems.viewall_distribution    | False          | False      |
+
+### Distribution View
+
+| Model           | Permission full name                      | Has permission | Owned only |
+|-----------------|-------------------------------------------|----------------|------------|
+| OperatingSystem | operating_systems.add_operatingsystem     | False          | False      |
+| OperatingSystem | operating_systems.change_operatingsystem  | False          | False      |
+| OperatingSystem | operating_systems.delete_operatingsystem  | False          | False      |
+| OperatingSystem | operating_systems.view_operatingsystem    | False          | False      |
+| OperatingSystem | operating_systems.viewall_operatingsystem | False          | False      |
+| Distribution    | operating_systems.add_distribution        | False          | False      |
+| Distribution    | operating_systems.change_distribution     | False          | False      |
+| Distribution    | operating_systems.delete_distribution     | False          | False      |
+| Distribution    | operating_systems.view_distribution       | True           | False      |
+| Distribution    | operating_systems.viewall_distribution    | False          | False      |
+
+### Distribution View Owned Only
+
+| Model           | Permission full name                      | Has permission | Owned only |
+|-----------------|-------------------------------------------|----------------|------------|
+| OperatingSystem | operating_systems.add_operatingsystem     | False          | False      |
+| OperatingSystem | operating_systems.change_operatingsystem  | False          | False      |
+| OperatingSystem | operating_systems.delete_operatingsystem  | False          | False      |
+| OperatingSystem | operating_systems.view_operatingsystem    | False          | False      |
+| OperatingSystem | operating_systems.viewall_operatingsystem | False          | False      |
+| Distribution    | operating_systems.add_distribution        | False          | False      |
+| Distribution    | operating_systems.change_distribution     | False          | False      |
+| Distribution    | operating_systems.delete_distribution     | False          | False      |
+| Distribution    | operating_systems.view_distribution       | True           | True       |
+| Distribution    | operating_systems.viewall_distribution    | False          | False      |
+
+### Distribution View All
+
+| Model           | Permission full name                      | Has permission | Owned only |
+|-----------------|-------------------------------------------|----------------|------------|
+| OperatingSystem | operating_systems.add_operatingsystem     | False          | False      |
+| OperatingSystem | operating_systems.change_operatingsystem  | False          | False      |
+| OperatingSystem | operating_systems.delete_operatingsystem  | False          | False      |
+| OperatingSystem | operating_systems.view_operatingsystem    | False          | False      |
+| OperatingSystem | operating_systems.viewall_operatingsystem | False          | False      |
+| Distribution    | operating_systems.add_distribution        | False          | False      |
+| Distribution    | operating_systems.change_distribution     | False          | False      |
+| Distribution    | operating_systems.delete_distribution     | False          | False      |
+| Distribution    | operating_systems.view_distribution       | False          | False      |
+| Distribution    | operating_systems.viewall_distribution    | True           | False      |
+
+### Distribution View All Owned Only
+
+| Model           | Permission full name                      | Has permission | Owned only |
+|-----------------|-------------------------------------------|----------------|------------|
+| OperatingSystem | operating_systems.add_operatingsystem     | False          | False      |
+| OperatingSystem | operating_systems.change_operatingsystem  | False          | False      |
+| OperatingSystem | operating_systems.delete_operatingsystem  | False          | False      |
+| OperatingSystem | operating_systems.view_operatingsystem    | False          | False      |
+| OperatingSystem | operating_systems.viewall_operatingsystem | False          | False      |
+| Distribution    | operating_systems.add_distribution        | False          | False      |
+| Distribution    | operating_systems.change_distribution     | False          | False      |
+| Distribution    | operating_systems.delete_distribution     | False          | False      |
+| Distribution    | operating_systems.view_distribution       | False          | False      |
+| Distribution    | operating_systems.viewall_distribution    | True           | True       |
