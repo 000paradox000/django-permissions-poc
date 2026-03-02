@@ -172,18 +172,3 @@ ignore_errors = true
 [[tool.mypy.overrides]]
 module = "*.tests.*"
 ignore_errors = true
-
-# =============================================================================
-[tool.bandit]
-# Skip specific rules
-skips = ["B105", "B106"]
-
-# Optional: keep your global file exclusions aligned with pre-commit
-exclude_dirs = [
-    "static_root",
-    "static",
-    "media",
-    "files",
-    "temporal",
-    "migrations",
-]
