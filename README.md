@@ -4,26 +4,33 @@ This is a PoC to test django-guardian.
 
 ## Models
 
-- [X] OperatingSystem
-  - name (i.e. Linux, Windows)
+### OperatingSystem
 
-- [X] Distribution
-  - name (i.e. Debian, Windows 11)
+| Field | Type         | Foreign Key |
+|-------|--------------|-------------|
+| name  | CharField    |             |
 
-## Fixtures
+| Name      |
+|-----------|
+| GNU/Linux |
+| Windows   |
+| Mac OS    |
 
-- [X] OperatingSystem
-  - GNU/Linux
-  - Windows
-  - Mac OS
+### Distribution
 
-- [X] Distribution
-  - Debian, GNU/Linux
-  - Rocky, GNU/Linux
-  - Windows 11, Windows
-  - Windows XP, Windows
-  - Sequoia, Mac OS
-  - Sonoma, Mac OS
+| Field             | Type       | Foreign Model   |
+|-------------------|------------|-----------------|
+| name              | CharField  |                 |
+| operating_system  | ForeignKey | OperatingSystem |
+
+| Name       | Operating System |
+|------------|------------------|
+| Debian     | GNU/Linux        |
+| Ubuntu     | GNU/Linux        |
+| Windows 11 | Windows          |
+| Windows XP | Windows          |
+| Sequoia    | Mac OS           |
+| Monterrey  | Mac OS           |
 
 ## Permissions
 
