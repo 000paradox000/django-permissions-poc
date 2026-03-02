@@ -37,5 +37,5 @@ repos:
     hooks:
       - id: bandit
         name: bandit (security checks)
-        args: ["--skip", "B105,B106,B101"]
+        args: ["--skip", "B101,B105,B106"]
         types: [python]

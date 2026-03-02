@@ -99,3 +99,18 @@ DATA = {
     "Windows": ["Windows 11", "Windows XP"],
     "Mac OS": ["Sequoia", "Sonoma"],
 }
+
+GROUPS = {
+    "Operating System Admin": [],
+    "Operating System Owner": [],
+    "Operating System Add": [],
+    "Operating System Add Owned Only": [],
+    "Operating System Change": [],
+    "Operating System Change Owned Only": [],
+    "Operating System Delete": [],
+    "Operating System Delete Owned Only": [],
+    "Operating System View": [],
+    "Operating System View Owned Only": [],
+    "Operating System View All": [],
+    "Operating System View All Owned Only": [],
+}

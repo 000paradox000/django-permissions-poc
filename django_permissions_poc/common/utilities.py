@@ -88,3 +88,13 @@ def list_urls() -> list[tuple[str, str]]:
 
     walk_patterns(resolver.url_patterns)
     return urls
+
+
+def get_admin_urlnames(app_label, model) -> dict[str, str]:
+    modelname = model._meta.model_name
+    return {
+        "changelist": f"admin:{app_label}_{modelname}_changelist",
+        "add": f"admin:{app_label}_{modelname}_add",
+        "change": f"admin:{app_label}_{modelname}_change",
+        "delete": f"admin:{app_label}_{modelname}_delete",
+    }

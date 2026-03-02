@@ -55,6 +55,10 @@ django.create_admin.%:
 	python manage.py create_admin \
 		--settings=config.settings.$*
 
+django.create_groups.%:
+	python manage.py create_groups \
+		--settings=config.settings.$*
+
 django.create_data.%:
 	python manage.py create_data \
 		--settings=config.settings.$*
@@ -68,6 +72,7 @@ django.init.%:
 	make requirements.install.$*
 	make django.migrations.$*
 	make django.create_admin.$*
+	make django.create_groups.$*
 	make django.create_data.$*
 	make django.collectstatic.$*
 

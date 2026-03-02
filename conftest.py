@@ -27,4 +27,5 @@ ACTIONS = ["add", "change", "delete", "view", "viewall"]
 def run_initial_management_commands(django_db_setup, django_db_blocker):
     with django_db_blocker.unblock():
         call_command("create_admin")
+        call_command("create_groups")
         call_command("create_data")
