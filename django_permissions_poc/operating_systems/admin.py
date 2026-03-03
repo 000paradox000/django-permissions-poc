@@ -39,12 +39,14 @@ class BaseAdmin(GuardedModelAdmin):
         # Use 'viewall' (or whatever you set) to filter the rows
         perm = self.get_permission_string(self.list_permission_codename)
 
-        return get_objects_for_user(
-            request.user,
-            perm,
+        qs = get_objects_for_user(
+            user=request.user,
+            perms=perm,
             klass=qs,
             accept_global_perms=False,
         )
+
+        return qs
 
     def has_view_permission(self, request, obj=None):
         # We check 'view' (standard) or your custom 'viewall'
