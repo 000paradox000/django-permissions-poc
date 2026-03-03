@@ -6,16 +6,38 @@ from .models import Distribution, OperatingSystem
 
 
 class BaseAdmin(GuardedModelAdmin):
-    def get_permission(self, name):
+    # Action name used for list filtering
+    list_permission_codename = "viewall"
+
+    def get_permission_string(self, action):
         opts = self.model._meta
-        return f"{opts.app_label}.{name}_{opts.model_name}"
+        return f"{opts.app_label}.{action}_{opts.model_name}"
+
+    def has_permission_logic(self, request, action, obj=None):
+        perm = self.get_permission_string(action)
+
+        # Check for global permission (True for superusers or staff with
+        # global rights)
+        if request.user.has_perm(perm):
+            return True
+
+        # If no object is provided (e.g., when loading the list view),
+        # we return True to allow the user into the room.
+        # The 'get_queryset' will then handle filtering out what they
+        # shouldn't see.
+        if obj is None:
+            return True
+
+        # Check for the specific object permission via Guardian
+        return request.user.has_perm(perm, obj)
 
     def get_queryset(self, request):
         qs = super().get_queryset(request)
         if request.user.is_superuser:
             return qs
 
-        perm = self.get_permission("viewall")
+        # Use 'viewall' (or whatever you set) to filter the rows
+        perm = self.get_permission_string(self.list_permission_codename)
 
         return get_objects_for_user(
             request.user,
@@ -25,28 +47,18 @@ class BaseAdmin(GuardedModelAdmin):
         )
 
     def has_view_permission(self, request, obj=None):
-        if obj is None:
-            return True
-
-        perm = self.get_permission("view")
-        return request.user.has_perm(perm, obj)
+        # We check 'view' (standard) or your custom 'viewall'
+        return self.has_permission_logic(request, "view", obj)
 
     def has_change_permission(self, request, obj=None):
-        if obj is None:
-            return True
-
-        perm = self.get_permission("change")
-        return request.user.has_perm(perm, obj)
+        return self.has_permission_logic(request, "change", obj)
 
     def has_delete_permission(self, request, obj=None):
-        if obj is None:
-            return True
-
-        perm = self.get_permission("delete")
-        return request.user.has_perm(perm, obj)
+        return self.has_permission_logic(request, "delete", obj)
 
     def has_add_permission(self, request):
-        perm = self.get_permission("add")
+        # 'Add' never has an 'obj', so it checks the global permission
+        perm = self.get_permission_string("add")
         return request.user.has_perm(perm)
 
 

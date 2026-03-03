@@ -26,6 +26,15 @@ def test_admin_has_all_model_permissions(django_user_model):
 
 
 def test_admin_can_access_admin_pages(django_user_model, client):
+    # import pydevd_pycharm
+    #
+    # pydevd_pycharm.settrace(
+    #     'localhost',
+    #     port=5432,
+    #     stdout_to_server=True,
+    #     stderr_to_server=True,
+    # )
+
     for model_source in MODELS:
         model_source_name = model_source._meta.model_name
         username = f"{model_source_name}_admin_1"
